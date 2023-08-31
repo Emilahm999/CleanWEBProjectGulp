@@ -49,7 +49,7 @@ export function random(min, max , integer = false) {
 export function isNumber(num) {
   switch (typeof num) {
     case "string":
-      if (num.trim() == "") {
+      if (num.trim() === "") {
         return false;
       }
       return (typeof +num == "number") ? !isNaN(+num) : false;
