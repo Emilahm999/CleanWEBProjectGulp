@@ -1,4 +1,4 @@
-
+// Возврващает строку с большой заглавной буквой, при space все пробелым введенные до строки сохранятся.
 export function firstUpperLetter (str , space = false) {
   if (!str) {
     console.log(`Строка не найдена`);
