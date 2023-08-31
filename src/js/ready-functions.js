@@ -30,7 +30,6 @@ export function random(min = 0, max = 1 , integer = false) {
   let rand = min + Math.random() * (max - min);
   if (integer) {
     rand = min + Math.random() * (max + 1 - min);
-    console.log(rand);
     return Math.floor(rand);
   } else {
     return rand;
