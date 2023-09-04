@@ -2,7 +2,7 @@
 export function firstUpperLetter (str , space = false) {
   if (!str) {
     console.error(`Строка не найдена`);
-    return
+    return;
   };
 
   let pos;
@@ -12,16 +12,16 @@ export function firstUpperLetter (str , space = false) {
       break;
     }
   }
-
+  str = str.slice(0, pos) + str[pos].toUpperCase(pos) + str.slice(pos + 1);
   if (space) {
-    return str.slice(0, pos) + str[pos].toUpperCase(pos) + str.slice(pos + 1);
+    return str;
   } else {
-    return str[pos].toUpperCase(pos) + str.slice(pos + 1);
+    return str.trim();
   }
 }
 
 // Возврат случайного числа от min до max (не включая max), при integer вовзращает целые числа
-export function random(min, max , integer = false) {
+export function getRandom(min, max , integer = false) {
   if (!isNumber(min)) {
     console.error(` Аргумент min = ${min} не является числом`);
     return;
@@ -45,6 +45,7 @@ export function random(min, max , integer = false) {
     return rand;
   }
 }
+
 // Возвращает истину если перменная равна числу, ложь при ` "", тексте, NaN, undefiend, infinity, -infinity`
 export function isNumber(num) {
   switch (typeof num) {
@@ -66,4 +67,9 @@ export function isNumber(num) {
     default:
       return false;
   }
+}
+
+// Возвращает массив с уникальными значениями
+export function getUniqueArray(array) {
+  return Array.from(new Set(array));
 }
