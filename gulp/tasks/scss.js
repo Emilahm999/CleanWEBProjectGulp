@@ -35,7 +35,7 @@ export const scss = () => {
          extname: ".css"
       }))
 		.pipe(app.gulp.dest(app.path.build.css));
-      // .pipe(app.plugins.browsersync.stream());
+      .pipe(app.plugins.browsersync.stream());
 }
 
 export const fullscss = () => {
@@ -62,5 +62,5 @@ export const fullscss = () => {
       }))
 		// .pipe(cleanCSS())
 		.pipe(app.gulp.dest(app.path.build.css));
-      // .pipe(app.plugins.browsersync.stream());
+      .pipe(app.plugins.browsersync.stream());
 }
