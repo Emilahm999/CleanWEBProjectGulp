@@ -1,4 +1,4 @@
-
+// Превращает первую букву в строке в заглавную
 export function firstUpperLetter (str , space = false) {
   if (!str) {
     console.error(`Строка не найдена`);
@@ -22,54 +22,105 @@ export function firstUpperLetter (str , space = false) {
 
 // Возврат случайного числа от min до max (не включая max), при integer вовзращает целые числа
 export function getRandom(min, max , integer = false) {
-  if (!isNumber(min)) {
-    console.error(` Аргумент min = ${min} не является числом`);
-    return;
-  }
+  try {
+    if (!isNumber(min)) {
+      throw new NumericError(` Аргумент min не является числом`, min)
+    }
+    
+    if (!isNumber(max)) {
+      throw new NumericError(` Аргумент max не является числом`, max)
+    }
   
-  if (!isNumber(max)) {
-    console.error(` Аргумент max = ${max} не является числом`);
-    return;
+    if (min > max) {
+      throw new NumericOverflowError(` Минимальное значение больше максимального`)
+    }
+  } catch (e) {
+    if (e instanceof NumericError) {
+      console.error(e.name + ": " + e.message + "\nЗначение аргумента = "+ e.property);
+    } else if (e instanceof NumericOverflowError) {
+      console.error(e);
+    } else {
+      throw e;
+    }
+    return NaN;
   }
-
-  if (min > max) {
-    console.error(`Минимальное значение больше максимального`);
-    return;
-  }
-
-  let rand = min + Math.random() * (max - min);
-  if (integer) {
-    rand = min + Math.random() * (max + 1 - min);
-    return Math.floor(rand);
-  } else {
-    return rand;
-  }
+    min = +min;
+    max = +max; 
+    let rand = min + Math.random() * (max - min);
+    if (integer) {
+      rand = min + Math.random() * (max + 1 - min);
+      return Math.floor(rand);
+    } else {
+      return rand;
+    }
+  
+  
 }
 
 // Возвращает истину если перменная равна числу, ложь при ` "", тексте, NaN, undefiend, infinity, -infinity`
 export function isNumber(num) {
-  switch (typeof num) {
-    case "string":
-      if (num.trim() === "") {
+  try {
+    switch (typeof num) {
+      case "string":
+        if (num.trim() === "" || num.trim() === "Infinity") {
+          return false;
+        }
+        return (typeof +num == "number") ? !isNaN(+num) : false;
+      case "boolean":
         return false;
-      }
-      return (typeof +num == "number") ? !isNaN(+num) : false;
-    case "boolean":
-      return false;
-    case "number":
-      if (isFinite(num)) {
-        return true;
-      } else if (num === 0) {
-        return true;
-      } else {
+      case "number":
+        if (isFinite(num)) {
+          return true;
+        } else if (num === 0) {
+          return true;
+        } else {
+          return false;
+        }
+      default:
         return false;
-      }
-    default:
-      return false;
+    }
+  } catch (e) {
+    console.log(e);
   }
+  
 }
 
 // Возвращает массив с уникальными значениями
 export function getUniqueArray(array) {
   return Array.from(new Set(array));
+}
+
+// Пользовательские ошибки
+
+//"Абстрактный" класс для наследование другими пользовательскими ошибками 
+class UserError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = this.constructor.name; // присваивание имени ошибки именем класса ошибки
+  }
+}
+
+export class NumericError extends UserError {
+  constructor(message, property = NaN) {
+    super(message);
+    if (property == "") {
+      this.property = NaN;
+    } else {
+      this.property = property;
+    }
+    
+  }
+}
+
+export class NumericOverflowError extends UserError {
+  constructor(message) {
+    super(message);
+  }
+}
+
+export class StringError extends UserError {
+  constructor(message, property = "") {
+    super(message);
+    this.property = property;
+  }
 }
