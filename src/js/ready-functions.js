@@ -42,7 +42,7 @@ export function getRandom(min, max , integer = false) {
     } else {
       throw e;
     }
-    return NaN;
+    return;
   }
     min = +min;
     max = +max; 
@@ -90,6 +90,41 @@ export function getUniqueArray(array) {
   return Array.from(new Set(array));
 }
 
+// возвращает высоту экрана браузера.
+export function getScrollHeight() {
+  let scrollHeight = Math.max(
+    document.body.scrollHeight, document.documentElement.scrollHeight,
+    document.body.offsetHeight, document.documentElement.offsetHeight,
+    document.body.clientHeight, document.documentElement.clientHeight
+  )
+
+  return scrollHeight;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Пользовательские ошибки
 
 //"Абстрактный" класс для наследование другими пользовательскими ошибками 
@@ -105,7 +140,7 @@ export class NumericError extends UserError {
     super(message);
     if (property == "") {
       this.property = NaN;
-    } else {
+    } else { 
       this.property = property;
     }
     
