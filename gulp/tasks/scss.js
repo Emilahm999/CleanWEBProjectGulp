@@ -34,8 +34,8 @@ export const scss = () => {
       .pipe(rename({
          extname: ".css"
       }))
-		.pipe(app.gulp.dest(app.path.build.css));
-      .pipe(app.plugins.browsersync.stream());
+		.pipe(app.gulp.dest(app.path.build.css))
+    .pipe(app.plugins.browsersync.stream());
 }
 
 export const fullscss = () => {
@@ -61,6 +61,6 @@ export const fullscss = () => {
          cascade: true
       }))
 		// .pipe(cleanCSS())
-		.pipe(app.gulp.dest(app.path.build.css));
-      .pipe(app.plugins.browsersync.stream());
+		.pipe(app.gulp.dest(app.path.build.css))
+    .pipe(app.plugins.browsersync.stream());
 }
