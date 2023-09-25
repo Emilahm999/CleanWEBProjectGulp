@@ -101,8 +101,8 @@ export function getScrollHeight() {
   return scrollHeight;
 }
 
-export function maskPhone(selector, masked = '+7 (___) ___-__-__') {
-	const elems = document.querySelectorAll(`${selector}[type="tel"]`);
+export function maskPhone(masked = '+7 ___ ___-__-__') {
+	const elems = document.querySelectorAll(`input[type="tel"]`);
 
 	function mask(event) {
 		const keyCode = event.keyCode;
@@ -138,6 +138,8 @@ export function maskPhone(selector, masked = '+7 (___) ___-__-__') {
 	}
 	
 }
+
+
 
 
 
