@@ -2,6 +2,7 @@ import webpack from "webpack-stream";
 import uglify from "gulp-uglify";
 
 export const js = () => {
+  
    return app.gulp.src(app.path.src.js, { sourcemaps: true })
       .pipe(app.plugins.plumber(
          app.plugins.notify.onError({
@@ -17,6 +18,50 @@ export const js = () => {
         },
          output: {
             filename: 'script.js',
+         }
+      }))
+      .pipe(app.gulp.dest(app.path.build.js))
+      .pipe(app.plugins.browsersync.stream())
+}
+
+export const jsDOM = () => {
+  return app.gulp.src(app.path.src.jsdom, { sourcemaps: true })
+      .pipe(app.plugins.plumber(
+         app.plugins.notify.onError({
+            title: "JS",
+            message: "Error: <%= error.message %>"
+         })
+      ))
+      .pipe(webpack({
+         mode: 'development',
+         devtool: 'eval-source-map',
+         optimization: {
+            minimize: false
+        },
+         output: {
+            filename: 'DOMLoaded.js',
+         }
+      }))
+      .pipe(app.gulp.dest(app.path.build.js))
+      .pipe(app.plugins.browsersync.stream());
+}
+
+export const prodjsDOM = () => {
+  return app.gulp.src(app.path.src.jsdom, { sourcemaps: true })
+      .pipe(app.plugins.plumber(
+         app.plugins.notify.onError({
+            title: "JS",
+            message: "Error: <%= error.message %>"
+         })
+      ))
+      .pipe(webpack({
+         mode: 'production',
+         devtool: 'eval-source-map',
+         optimization: {
+            minimize: false
+        },
+         output: {
+            filename: 'DOMLoaded.js',
          }
       }))
       .pipe(app.gulp.dest(app.path.build.js))

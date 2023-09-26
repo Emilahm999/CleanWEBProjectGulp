@@ -14,14 +14,17 @@ export const path = {
       images: `${buildFolder}/img/`,
       fonts: `${buildFolder}/fonts/`,
       files: `${buildFolder}/files/`,
+      test: `${srcFolder}/js/tests/`,
    },
    src: {
       js: `${srcFolder}/js/script.js`,
+      jsdom: `${srcFolder}/js/DOMLoaded.js`,
       images: `${srcFolder}/img/**/*.{jpg,jpeg,png,gif,webp}`,// добавить другие форматы в фигурные скобки
       svg: `${srcFolder}/img/**/*.svg`,
       scss: `${srcFolder}/scss/style.scss`,
       html: `${srcFolder}/*.html`,
       files: `${srcFolder}/files/**/*.*`,
+      test: `${srcFolder}/js/tests/test.js`
    },
    watch: {
       js: `${srcFolder}/js/**/*.js`,
