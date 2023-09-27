@@ -1,3 +1,21 @@
+export function testWebP(callback) {
+
+  var webP = new Image();
+  webP.onload = webP.onerror = function () {
+  callback(webP.height == 2);
+  };
+  webP.src = "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
+  }
+  
+  testWebP(function (support) {
+  
+  if (support == true) {
+  document.querySelector('body').classList.add('webp');
+  }else{
+  document.querySelector('body').classList.add('no-webp');
+  }
+  });
+
 // Превращает первую букву в строке в заглавную
 export function firstUpperLetter (str , space = false) {
   if (!str) {
@@ -132,14 +150,13 @@ export function maskPhone(masked = '+7 ___ ___-__-__') {
 	}
 
 	for (const elem of elems) {
+    elem.placeholder = "+7 ___ ___-__-__";
 		elem.addEventListener("input", mask);
 		elem.addEventListener("focus", mask);
 		elem.addEventListener("blur", mask);
 	}
 	
 }
-
-
 
 
 

@@ -1,2 +1,4 @@
-"use srtict"
-import * as ready from "./ready-functions.js";
+"use strict"
+import * as func from "./modules/functions.js";
+
+func.testWebP();
