@@ -1,5 +1,6 @@
 import webpack from "webpack-stream";
 import uglify from "gulp-uglify";
+import babel from "gulp-babel";
 
 export const js = () => {
   
@@ -10,6 +11,9 @@ export const js = () => {
             message: "Error: <%= error.message %>"
          })
       ))
+      .pipe(babel({
+        presets: ["@babel/preset-env"]
+      }))
       .pipe(webpack({
          mode: 'development',
          devtool: 'eval-source-map',
@@ -32,6 +36,9 @@ export const jsDOM = () => {
             message: "Error: <%= error.message %>"
          })
       ))
+      .pipe(babel({
+        presets: ["@babel/preset-env"]
+      }))
       .pipe(webpack({
          mode: 'development',
          devtool: 'eval-source-map',
@@ -54,6 +61,9 @@ export const prodjsDOM = () => {
             message: "Error: <%= error.message %>"
          })
       ))
+      .pipe(babel({
+        presets: ["@babel/preset-env"]
+      }))
       .pipe(webpack({
          mode: 'production',
          devtool: 'eval-source-map',
@@ -76,6 +86,9 @@ export const prodjs = () => {
             message: "Error: <%= error.message %>"
          })
       ))
+      .pipe(babel({
+        presets: ["@babel/preset-env"]
+      }))
       .pipe(webpack({
          mode: 'production',
          devtool: false,
