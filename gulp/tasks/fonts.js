@@ -49,27 +49,35 @@ export const fontsStyle = () => {
                   let fontWeight = fontFileName.split('-')[1] ? fontFileName.split('-')[1] : fontFileName;
                   if (fontWeight.toLowerCase() === 'thin') {
                      fontWeight = 100;
+                     fontName+= '-thin';
                   }
                   else if (fontWeight.toLowerCase() === 'extralight') {
                      fontWeight = 200;
+                     fontName+= '-extralight';
                   }
                   else if (fontWeight.toLowerCase() === 'light') {
                      fontWeight = 300;
+                     fontName+= '-light';
                   }
                   else if (fontWeight.toLowerCase() === 'medium') {
                      fontWeight = 500;
+                     fontName+= '-medium';
                   }
                   else if (fontWeight.toLowerCase() === 'semibold') {
                      fontWeight = 600;
+                     fontName+= '-semibold';
                   }
                   else if (fontWeight.toLowerCase() === 'bold') {
                      fontWeight = 700;
+                     fontName+= '-bold';
                   }
                   else if (fontWeight.toLowerCase() === 'extrabold' || fontWeight.toLowerCase() === 'heavy') {
                      fontWeight = 800;
+                     fontName+= '-extrabold';
                   }
                   else if (fontWeight.toLowerCase() === 'black') {
                      fontWeight = 900;
+                     fontName+= '-black';
                   } else {
                      fontWeight = 400;
                   }
