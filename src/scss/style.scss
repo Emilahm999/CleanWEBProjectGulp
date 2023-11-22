@@ -1,3 +1,32 @@
-
 @import "reset";
 @import "fonts";
+@import "swiper";
+
+:root {
+  // Раскомментировать если верстка по пикселям
+  --main-font-size: 16px;
+
+  // Переменная ширины экрана макета декстоп
+  --view-width: 1920;
+
+  // Единица измерения для верстки при помощи rem
+  // При разрешение 1920px  calc(100vw / 1920) = 1 px
+  // умножается на 10 для удобства верстки. 1 rem = 10px
+  font-size: var(--main-font-size, calc(100vw / var(--view-width, 1920) * 10));
+
+  // Планшет  
+  @media (max-width:1024px ) {
+    // Расчет переменной для планшетов
+    // При необходимости раскомментировать
+    // --view-width: 768;
+  }
+
+  @media (max-width:767px ) {
+    // --view-width: 500;
+  }
+  // Мобильная
+  @media (max-width:500px ) {
+    --view-width: 375;
+  }
+
+}
