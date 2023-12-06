@@ -2,7 +2,6 @@ import * as dartSass from 'sass';
 import gulpSass from 'gulp-sass';
 import rename from 'gulp-rename';
 import cleanCSS from 'gulp-clean-css'; // Сжатие css файла
-import webpcss from 'gulp-webpcss'; // Вывод webp изображений
 import autoPrefixer from 'gulp-autoprefixer'; // Добавление вендорных префиксов
 import groupCssMediaQueries from 'gulp-group-css-media-queries'; // Группировка медиа запросов
 
@@ -21,10 +20,6 @@ export const scss = () => {
          outputStyle: 'expanded' // Вывод файла (сжатие)
       }))
       .pipe(groupCssMediaQueries())
-      .pipe(webpcss({
-         webpClass: '.webp',
-         noWebpClass: ".no-webp"
-      }))
       .pipe(autoPrefixer({
          grid: true,
          overrideBrowserslist: ["last 3 version"],
@@ -51,10 +46,6 @@ export const fullscss = () => {
          outputStyle: 'expanded' // Вывод файла (сжатие)
       }))
       .pipe(groupCssMediaQueries())
-      .pipe(webpcss({
-         webpClass: '.webp',
-         noWebpClass: ".no-webp"
-      }))
       .pipe(autoPrefixer({
          grid: true,
          overrideBrowserslist: ["last 3 version"],

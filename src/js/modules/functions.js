@@ -104,11 +104,6 @@ export function isNumber(num) {
   
 }
 
-// Возвращает массив с уникальными значениями
-export function getUniqueArray(array) {
-  return Array.from(new Set(array));
-}
-
 // возвращает высоту экрана браузера.
 export function getScrollHeight() {
   let scrollHeight = Math.max(
@@ -119,7 +114,7 @@ export function getScrollHeight() {
 
   return scrollHeight;
 }
-
+// Маска для телефона в inputy[type="tel"]
 export function maskPhone(masked = '+7 ___ ___-__-__') {
 	const elems = document.querySelectorAll(`input[type="tel"]`);
 
